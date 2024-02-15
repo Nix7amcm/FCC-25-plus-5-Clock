@@ -18,11 +18,11 @@ Table of Contents:
 
 #### <u>Desktop</u>
 
-
+![Desktop screenshot](/pomodoro-timer/public/assets/solution-imgs/desktop.png)
 
 #### <u>Mobile</u>
 
-
+![Mobile screenshot](/pomodoro-timer/public/assets/solution-imgs/mobile.png)
 
 * * *
 
