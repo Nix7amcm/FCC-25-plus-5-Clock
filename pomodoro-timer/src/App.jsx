@@ -7,10 +7,14 @@ import './styles/App.css';
 
 function App () {
 
+  //_____ Variables for timer labels indicating session/break time:
+  const FOCUS_TIME_LABEL = 'Focus Time! 🚀';
+  const BREAK_TIME_LABEL = 'Break Time! 🦥';
+
   //_____ State variables:
   const [ breakLength, setBreakLength ] = useState( 5 );
   const [ sessionLength, setSessionLength ] = useState( 25 );
-  const [ timerLabel, setTimerLabel ] = useState( 'Focus Time! 🚀' );
+  const [ timerLabel, setTimerLabel ] = useState( FOCUS_TIME_LABEL );
   const [ timeLeft, setTimeLeft ] = useState( 25 * 60 );
   const [ isRunning, setIsRunning ] = useState( false );
 
@@ -18,6 +22,7 @@ function App () {
   //_____ Refs:
   const audioRef = useRef( null );
   const intervalRef = useRef( null );
+
 
 
   //_____ Format time into MM:SS:
@@ -53,12 +58,12 @@ function App () {
       //>>> Switch from session to break or break to session:
       setTimerLabel( ( prevLabel ) => {
         //>>> If the previous label was "Focus Time!", set the new label to "Break Time!" and vice versa:
-        if ( prevLabel === 'Focus Time! 🚀' ) {
+        if ( prevLabel === FOCUS_TIME_LABEL ) {
           setTimeLeft( breakLength * 60 ); //--- Set timeLeft for a break
-          return 'Break Time! 🦥';
+          return BREAK_TIME_LABEL;
         } else {
           setTimeLeft( sessionLength * 60 ); //--- Set timeLeft for a session
-          return 'Focus Time! 🚀';
+          return FOCUS_TIME_LABEL;
         }
       } );
     }
@@ -82,7 +87,7 @@ function App () {
     setBreakLength( 5 );
 
     //>>> Reset the timer label back to "Focus Time!":
-    setTimerLabel( 'Focus Time! 🚀' );
+    setTimerLabel( FOCUS_TIME_LABEL );
 
     //>>> Reset audio:
     audioRef.current.pause();
@@ -110,7 +115,8 @@ function App () {
               if ( !isRunning ) {
                 setBreakLength( ( prev ) => {
                   const newLength = isIncrement ? Math.min( prev + 1, 60 ) : Math.max( prev - 1, 1 );
-                  if ( timerLabel === 'Break Time! 🦥' ) {
+                  // Update timeLeft only if we're currently in a Break Time
+                  if ( timerLabel === BREAK_TIME_LABEL ) {
                     setTimeLeft( newLength * 60 );
                   }
                   return newLength;
@@ -133,7 +139,8 @@ function App () {
               if ( !isRunning ) {
                 setSessionLength( ( prev ) => {
                   const newLength = isIncrement ? Math.min( prev + 1, 60 ) : Math.max( prev - 1, 1 );
-                  if ( timerLabel === 'Focus Time 🚀' ) {
+                  // Update timeLeft only if we're currently in a Focus Time
+                  if ( timerLabel === FOCUS_TIME_LABEL ) {
                     setTimeLeft( newLength * 60 );
                   }
                   return newLength;
