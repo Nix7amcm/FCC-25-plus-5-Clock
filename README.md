@@ -94,7 +94,6 @@ You can use any mix of HTML, JavaScript, CSS, Bootstrap, SASS, React, Redux, and
 
 - [x] **User Story #28:** The audio element with id of `beep` must stop playing and be rewound to the beginning when the element with the id of `reset` is clicked.
 
-* [ ] 
 * * *
 
 ## Additional Notes:
@@ -104,26 +103,4 @@ You can build your project by [using this CodePen template](https://codepen.io/
 Once you're done, submit the URL to your working project with all its tests passing.
 
 **Note:** React 18 has known incompatibilities with the tests for this project (see [issue](https://github.com/freeCodeCamp/freeCodeCamp/issues/45922))
-
-* * *
-
-* * *
-
-## Step-by-Step Guide to Implement the Clock Logic
-
-I entered my entire `script.js` code (with more detailed comments - provided below this) into ChatGPT. I asked it to 'reverse-engineer' it to create a detailed yet easy to follow step-by-step guide for creating the clock logic. I did this so that I can return to this project at any time for help with future projects, or to remind myself of what I learned here.
-
-> ChatGPT has been an envaluable tool in my learning to code, mainly due to the ability to ask any and as many questions required to understand whatever I want or need, and therefore to learn in the way that I learn. Following other people's tutorials, guides, courses, videos, etc, are great tools for learning, but in most cases are only suitable if you think and learn exactly like the person creating them. For me, I often find something missing, or have simple questions that can't be unanswered, and am wasting valuable learning hours searching the internet to find answers just to help something 'click'. ChatGPT is also excellent for help with troubleshooting, and for providing guides and code snippets. It is not 100% reliable, which in itself is a bonus, as it has been through troubleshooting and asking more questions that I am learning even more.
-
-Here is the guide to recreate my clock logic:
-
-1. 
-
-* * *
-
-## Full `script.js` Code With Detailed Comments
-
-I used Github Copilot to help create this logic. Like ChatGPT, I have found it an envaluable tool for learning to code, and coding in general. It can explain, troubleshoot or provide code. Its autocomplete capabilities have greatly increased the speed which I can create and learn from projects.
-
-When I finished, I highlighted my entire code and asked Copilot to add detailed comments, which will be so helpful for returning to this project or anyone else viewing the code.
 

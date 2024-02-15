@@ -1,7 +1,9 @@
 import React from 'react';
 import '../styles/LengthControl.css';
 
+// ***** Renders the Break/Session length controls *****
 
+//>>> Pass in the props:
 const LengthControl = ( {
   title,
   count,

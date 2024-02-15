@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Controls.css';
 
+// ***** Renders the Start/Stop/Reset Timer controls *****
 
 const Controls = ( { onStartStop, onReset } ) => {
   return (

@@ -1,8 +1,9 @@
 import React from 'react';
 import '../styles/TimerDisplay.css';
 
-const TimerDisplay = ( { label, timeLeft } ) => {
+// ***** Renders the Label and Time left of the Timer Display *****
 
+const TimerDisplay = ( { label, timeLeft } ) => {
 
   return (
     <div id='timer'>

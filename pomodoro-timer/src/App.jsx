@@ -7,40 +7,45 @@ import './styles/App.css';
 
 function App () {
 
+  //_____ State variables:
   const [ breakLength, setBreakLength ] = useState( 5 );
   const [ sessionLength, setSessionLength ] = useState( 25 );
   const [ timerLabel, setTimerLabel ] = useState( 'Focus Time! 🚀' );
   const [ timeLeft, setTimeLeft ] = useState( 25 * 60 );
   const [ isRunning, setIsRunning ] = useState( false );
 
+
+  //_____ Refs:
   const audioRef = useRef( null );
   const intervalRef = useRef( null );
 
 
-  //_____ Format time into MM:SS _____
+  //_____ Format time into MM:SS:
   const formatTimeLeft = ( time ) => {
-    const minutes = Math.floor( time / 60 );
-    const seconds = time % 60;
-    console.log( 'formatTimeLeft received:', time ); // Console log for debugging
-    return `${minutes.toString().padStart( 2, '0' )}:${seconds.toString().padStart( 2, '0' )}`;
+    const minutes = Math.floor( time / 60 ); //--- Calculate the minutes by dividing time by 60
+    const seconds = time % 60; //--- Calculate the seconds by getting the remainder of time divided by 60
+    return `${minutes.toString().padStart( 2, '0' )}:${seconds.toString().padStart( 2, '0' )}`; //--- Return the formatted time as a string
   };
 
 
-  //_____ Effect for handling the timer  _____
+  //_____ Effect for handling the timer:
   useEffect( () => {
     if ( isRunning ) {
+      //>>> If the timer is running, set an interval to decrement the timeLeft by 1 every second:
       intervalRef.current = setInterval( () => {
         setTimeLeft( ( prevTime ) => prevTime - 1 );
       }, 1000 );
     } else {
+      //>>> If the timer is not running, clear the interval:
       clearInterval( intervalRef.current );
     }
 
+    //>>> Clean up the interval when the component unmounts or when isRunning changes:
     return () => clearInterval( intervalRef.current );
   }, [ isRunning ] );
 
 
-  //_____ Effect to handle session/break switch & play sound _____
+  //_____ Effect to handle session/break switch & play sound:
   useEffect( () => {
     if ( timeLeft === 0 ) {
       audioRef.current.play(); //--- Play the end-of-time sound
@@ -60,13 +65,13 @@ function App () {
   }, [ timeLeft, breakLength, sessionLength, timerLabel ] );
 
 
-  //_____ Start/Stop functionality _____
+  //_____ Start/Stop functionality:
   const handleStartStop = () => {
     setIsRunning( !isRunning );
   };
 
 
-  //_____ Reset functionality _____
+  //_____ Reset functionality:
   const handleReset = () => {
     //>>> Stop the timer:
     setIsRunning( false );
@@ -87,12 +92,13 @@ function App () {
 
   return (
     <div className="App">
+      <div className="container">
+        <header id="main-title">
+          <h1>25+5 Clock</h1>
+          <h2>'Pomodoro Timer'</h2>
+        </header>
 
-      <div className='container'>
-
-        <header id='main-title'><h1>25+5 Clock</h1><h2>'Pomodoro Timer'</h2></header>
-
-        <div className='break-session-ctrls-wrap'>
+        <div className="break-session-ctrls-wrap">
           <LengthControl
             title="Break"
             count={breakLength}
@@ -104,7 +110,6 @@ function App () {
               if ( !isRunning ) {
                 setBreakLength( ( prev ) => {
                   const newLength = isIncrement ? Math.min( prev + 1, 60 ) : Math.max( prev - 1, 1 );
-                  //>>> Update timeLeft only if we're currently in a Break Time:
                   if ( timerLabel === 'Break Time! 🦥' ) {
                     setTimeLeft( newLength * 60 );
                   }
@@ -115,7 +120,7 @@ function App () {
             isDisabled={isRunning}
           />
 
-          <img src='/assets/icons8-timer-100.png' alt='arrow' />
+          <img src="/assets/icons8-timer-100.png" alt="arrow" />
 
           <LengthControl
             title="Session"
@@ -128,7 +133,6 @@ function App () {
               if ( !isRunning ) {
                 setSessionLength( ( prev ) => {
                   const newLength = isIncrement ? Math.min( prev + 1, 60 ) : Math.max( prev - 1, 1 );
-                  //>>> Update timeLeft only if we're currently in a Session:
                   if ( timerLabel === 'Focus Time 🚀' ) {
                     setTimeLeft( newLength * 60 );
                   }
@@ -140,52 +144,36 @@ function App () {
           />
         </div>
 
-        <div className='timer-wrapper'>
-          <TimerDisplay
-            label={timerLabel}
-            timeLeft={formatTimeLeft( timeLeft )}
-          />
+        <div className="timer-wrapper">
+          <TimerDisplay label={timerLabel} timeLeft={formatTimeLeft( timeLeft )} />
 
-          <Controls
-            onStartStop={handleStartStop}
-            onReset={handleReset}
-          />
+          <Controls onStartStop={handleStartStop} onReset={handleReset} />
 
-          {/* <button onClick={() => audioRef.current.play()}>Play Sound</button> */}
-
+          {/* <button onClick={() => audioRef.current.play()}>Play Sound</button> */}{/*--- For testing the sound---*/}
         </div>
-
       </div>
 
       <footer>
-
-        <p className='footer-me'>
-          Coded by <a
-            className="footer-link"
-            href="https://github.com/Nix7amcm"
-            target='_blank'
-            rel='noopener noreferrer'
-          >Nix7amcm</a>⚡
+        <p className="footer-me">
+          Coded by{' '}
+          <a className="footer-link" href="https://github.com/Nix7amcm" target="_blank" rel="noopener noreferrer">
+            Nix7amcm
+          </a>
+          ⚡
         </p>
 
-        <p className='footer-credit'>
-          <a
-            className="footer-link"
-            href="https://icons8.com/icons/set/timer"
-            target="_blank"
-            rel='noopener noreferrer'
-          >Timer</a> icon by <a
-            className="footer-link"
-            href="https://icons8.com"
-            target="_blank"
-            rel='noopener noreferrer'
-          >Icons8</a>
+        <p className="footer-credit">
+          <a className="footer-link" href="https://icons8.com/icons/set/timer" target="_blank" rel="noopener noreferrer">
+            Timer
+          </a>{' '}
+          icon by{' '}
+          <a className="footer-link" href="https://icons8.com" target="_blank" rel="noopener noreferrer">
+            Icons8
+          </a>
         </p>
-
       </footer>
 
-      <audio id='beep' ref={audioRef} src='/assets/puzzle-game-victory-melody.wav' preload='auto' />
-
+      <audio id="beep" ref={audioRef} src="/assets/puzzle-game-victory-melody.wav" preload="auto" />
     </div>
   );
 }
