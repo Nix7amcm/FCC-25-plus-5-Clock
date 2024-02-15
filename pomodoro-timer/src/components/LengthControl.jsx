@@ -15,15 +15,21 @@ const LengthControl = ( {
   return (
     <div className="length-control">
       
-      <div id={labelId}>{title}</div>
-      <button id={decrementId} onClick={() => onClickHandler( false )} disabled={isDisabled}>
-        -
-      </button>
+      <div id={labelId} className='break-session-title' >{title}</div>
       
-      <div id={lengthId}>{count}</div>
-      <button id={incrementId} onClick={() => onClickHandler( true )} disabled={isDisabled}>
-        +
-      </button>
+      <div className='length-btns-count-wrap'>
+        <button id={decrementId} onClick={() => onClickHandler( false )} disabled={isDisabled}>
+          -
+        </button>
+        
+        <div id={lengthId}>{count}</div>
+        
+        <button id={incrementId} onClick={() => onClickHandler( true )} disabled={isDisabled}>
+          +
+        </button>
+      </div>
+
+      <div className='mins'>mins</div>
     
     </div>
   );

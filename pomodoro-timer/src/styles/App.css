@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+.App,
+.container,
+.break-session-ctrls-wrap,
+.timer-wrapper,
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  padding: 1rem;
+  font-family: "Montserrat", sans-serif;
+  color: #eee;
+  font-weight: 500;
+  line-height: normal;
+  text-shadow: var(--text-shadow);
+  background-color: #603cba;
+}
+
+.container {
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 25rem;
+  padding-block: 1.5rem;
+  padding-inline: 0.5rem;
+  background: linear-gradient(145deg, #5636a7, #6740c7);
+  border-radius: var(--bdrs);
+  box-shadow: 20px 20px 60px #52339e,
+  -20px -20px 60px #6e45d6;
+}
+
+#main-title {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #FC63BD;
+}
+
+#main-title h2 {
+  text-decoration: #19d6fa underline wavy;
+  text-decoration-thickness: 0.17rem;
+  text-underline-offset: 0.5rem;
+}
+
+.break-session-ctrls-wrap {
+  width: 100%;
+}
+
+.break-session-ctrls-wrap img {
+  width: 3rem;
+  height: auto;
+  animation: timerAnim 1s linear 0s infinite normal;
+}
+
+@keyframes timerAnim {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.timer-wrapper {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  border-radius: var(--bdrs);
+  background: var(--tp-white-bg);
+}
+
+button {
+  color: #eee;
+  font-weight: 700;
+  background: none;
+  background: var(--tp-white-bg);
+  border: none;
+  border-radius: var(--bdrs);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.break-session-ctrls-wrap button {
+  width: 1.375rem;
+}
+
+.timer-wrapper button {
+  padding-inline: 0.5rem;
+}
+
+button:hover,
+button:focus-visible {
+  background-color: #19d4faa7;
+}
+
+button:active {
+  background-color: #19d4fa;
+}
+
+footer {
+  flex-direction: column;
+  font-size: .75rem;
+}
+
+.footer-credit {
+  font-size: .625rem;
+}
+
+.footer-me {
+  margin-bottom: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+.footer-link {
+  color: #14ff99;
+  text-decoration: none;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: #19d6fa;
+  text-decoration: #14ff99 underline;
+  text-decoration-thickness: 0.11rem;
+  text-underline-offset: 0.1rem;
+}
+
+.footer-link:active {
+  color: #14ff99;
+}

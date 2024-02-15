@@ -1,0 +1,23 @@
+.length-control,
+.length-btns-count-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.length-control {
+  flex-direction: column;
+  width: 100%;
+}
+
+.break-session-title {
+  padding-bottom: 0.5rem;
+}
+
+.length-btns-count-wrap {
+  gap: 0.75rem;
+}
+
+.mins {
+  font-size: 0.75rem;
+}
