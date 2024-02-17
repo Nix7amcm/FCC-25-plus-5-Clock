@@ -4,6 +4,7 @@
 .container,
 .break-session-ctrls-wrap,
 .timer-wrapper,
+button,
 footer {
   display: flex;
   justify-content: center;
@@ -33,7 +34,7 @@ footer {
   background: linear-gradient(145deg, #5636a7, #6740c7);
   border-radius: var(--bdrs);
   box-shadow: 20px 20px 60px #52339e,
-  -20px -20px 60px #6e45d6;
+    -20px -20px 60px #6e45d6;
 }
 
 #main-title {
